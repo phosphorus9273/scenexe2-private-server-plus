@@ -31,7 +31,7 @@ const main = function (scenexe2) {
     }`,
     Scenexe2File: fs.readFileSync('./ServerFiles//MainScenexe2.js'),
     Files: true,
-    certReq: true
+    certReq: false
   };
   let data = scenexe2.run(options);
   //data.dimension.dims.crossroadsLobby.gleaming = 1

@@ -1,0 +1,69 @@
+
+//Obby
+/*
+!function() {
+  const dim = dimension.create({
+	maxWormholes: 0,
+    mapSize: 9650,                        // mapsize
+    name: 'obby',                         // internal name of dim
+    fillWalls: false, 
+    type: 'ffa',                          // leave this
+    freeJoin: true,                       // whether tank can join from server select
+    allowScale: true,                     // allow use of /mapsize command
+    removeFallens: true,                  // remove tanks that go fallen
+    displayName: 'Obby',             // name of dim shown on server select
+    displayRadiant: 0,                    // make color radiant on server select
+    displayColor: 3,                      // color on server select
+    walls: [[-2299,-2299,100,100],[-1401,-2299,800,100],[-2299,-1399,100,800],[-2301,2301,100,100],[-1401,2301,800,100],[-2301,1401,100,800],[2299,2301,100,100],[1399,2301,800,100],[2299,1399,100,800],[2301,-2301,100,100],[2301,-1399,100,800],[1399,-2301,800,100],[-50,0,500,500,8],[-1050,0,500,500],[943,0,500,500],[150,-1000,10,500,8],[-50,-1500,200,10,8],[-250,-1250,10,250,8],[-350,-1000,100,10,8],[-450,-1250,10,250,8],[-550,-1500,100,10,8],[-650,-1250,10,250,8],[-50,-1800,500,100],[-750,-800,100,10,8],[-650,-1050,10,250,8],[-800,-650,100,140],null,[-750,-1300,90,490],[-200,-1600,500,90],[550,-1000,100,500],[550,-1700,100,200],[250,-1700,100,100],[50,-950,10,450,5],[-50,-1400,100,10,5],[-150,-1100,10,300,5],[-350,-800,150,10,5],[-500,-1100,10,300,5],[-400,-1300,10,210,5],[-300,-1300,10,210,5],[-350,-1100,50,10,5],[-400,-500,450,10],[-900,-1290,40,500],[-550,-1400,50,10,5],[-600,-1100,10,300,5],[-600,-750,50,50,5],[-200,-800,20,10,5]],                            // [ [x, y, w, h] ],
+    gates: [],
+    background: {                         // background color
+      r: 205,
+      g: 205,
+      b: 205
+    }, 
+    grid: {                               // grid color
+      r: 200,
+      g: 200,
+      b: 200
+    },
+    gridSize: 25,
+    maxPolygonSides: 0,
+    maxPolygonCount: 1000,
+    spawnPlayer: function(team, tank) {
+      tank.invincible = true,             
+      tank.invincibleTime = 1000,   
+      tank.team = 8 
+      setTimeout(function() {
+        if(tank.ws.sendPacket) {          // send a notification
+		tank.ws.sendPacket('announcement', 'Welcome this is a copy of axelbastions arms-race server')
+		tank.ws.sendPacket('announcement', 'This server is currently running on a Raspberry Pi')
+          tank.ws.sendPacket('announcement', '/a for commands')
+        }
+      })
+      return [0 , 0] 
+
+    }
+  })
+  
+  const testTank= generator.tank({          // create a tank
+    dim: dim,
+    x: -350,
+    y: -1300,
+	name: 'Test',                   // display name
+    weapon: 'mono',                     // weapon
+    body: 'hearth',                   // body
+    score: 0,
+    static: true,                       // make bot unpushable and unable to gain xp
+    team: 5,
+    ai: 'fallen',
+	invincible: true,
+    invincibleTime: !0
+  })
+  //wormhole.main(dim)
+}()
+*/
+
+//Offcial Obby
+/* 
+!function(){dimension.isolate=!0;let $=[[0,500,400,100],[1550,750,600,600,8],[-300,-1900,200,100],[-250,-500,220,100],[250,-500,220,100],[-650,50,120,35],[500,-600,100,1200],[-1206,1813,500,500],[400,-1900,300,100],[-100,-1350,10,650],[100,-1350,10,650],[-192,-850,100,100],[-198,-1100,100,100],[69,-1350,100,100],[86,-1600,100,100],[350,-2500,950,100],[989,-1850,100,10,2],[1250,-2200,150,400],[1300,600,100,600],[850,-1800,350,10],[1100,-1200,100,50],[700,-1200,100,50],[900,-1700,250,40],[700,-1600,197,10],[1100,-1600,197,10],[900,-1350,200,10],[-1150,-1300,250,150,8],[-700,1050,100,20],[-700,700,100,20],[-700,550,100,150],[-700,1200,100,150],[400,1250,1e3,100],[-700,750,100,20],[-700,800,100,20],[900,0,80,80],[-700,850,100,20],[-700,900,100,20],[-700,950,100,20],[-700,1e3,100,20],[700,0,100,100],[2e3,0,1e3,100],[-450,1050,10,100,8],[-450,700,10,100,8],[1100,2150,1e3,1e3],[550,750,10,150,8],[-1100,350,500,50,8],[100,1e3,10,150,8],[-950,900,100,500],[200,1350,1200,50],[-1350,500,300,100],[-1550,150,120,35],[-1e3,150,400,35],[-1200,50,400,35],[-1437,100,25,25],[-1700,300,100,300],[-500,-900,100,1500],[-1200,-269.3994940936565,200,10,2],[-700,-475.40455315709113,100,10,2],[-1200,-1069.3994940936566,200,10,2],[-1e3,-969.3994940936566,200,10,2],[-1200,-869.3994940936566,200,10,2],[-1e3,-769.3994940936566,200,10,2],[-1200,-669.3994940936566,200,10,2],[-1e3,-569.3994940936565,200,10,2],[-1200,-469.3994940936565,200,10,2],[-1e3,-369.3994940936565,200,10,2],[-1400,-1200,70,105],[-1450,-2799,20,550],[-1450,-1669,20,550],[-850,-2700,500,100],[-1750,-2450,50,1300],[-300,-3700,1500,100],[3400,-2550,300,50,8],[-1550,-550,250,600],[-700,-650,200,500],[-1400,-1700,35,525],[-1500,-1800,35,500],[-1400,-2300,35,45],[3100,-200,100,400],[-1450,-2850,100,550],[190,-3250,200,10],[1300,-1050,100,750],[-450,-3300,100,300],[400,-2700,100,100],[1100,-3400,100,200],[1100,-2800,100,200],[1500,-3100,100,300],[921,222,300,100],[700,354,100,10],[841,344,10,10],[-600,550,150,150],[-650,1250,200,200],[3200,1900,2e3,2e3],[0,0,400,400,8],[900,-850,100,100],[-850,-1300,50,150],[-950,-1950,10,500,8],[-1050,-2450,110,10,8],[-1150,-2050,10,390,8],[-1250,-1650,110,10,8],[-1350,-1950,10,290,8],[-1385,-2241,40,10,8],[2757,-2590,1050,10],[-950,-3200,100,100,5],[-1458,-1777,50,500,8],[-1200,-1550,160,10,5],[-1050,-1950,10,390,5],[-1250,-2200,10,400,5],[1700,-2700,100,300],[1300,-3300,100,100],[3450,-1900,250,500,8],[3150,-2e3,50,100],[3150,-2300,50,100],[3150,-2150,50,50,8],[1650,-2150,50,250,8],[3800,-2250,100,350],[3900,-1300,700,100],[4050,-1650,350,250,8],[4500,-2300,100,900],[4150,-2500,250,600,8],[2850,-2850,1050,250,8],[3200,-3200,1400,10],[1700,-3200,100,200,8],[3800,-2900,100,200],[3600,-2998,150,100],[3400,-2618,150,100],[3200,-2635,150,100],[3e3,-2621,150,100],[2800,-2746,150,100],[2600,-2602,150,100],[2400,-2620,150,100],[2200,-2978,150,100],[2e3,-2694,150,100],[3450,-2450,350,50],[2850,-3100,1050,10],[1800,-3150,10,60],[2200,-1800,800,100],[2100,-100,910,10,2],[3e3,-1250,10,440,2],[2200,-1700,810,10,2],[1400,-1e3,10,690,2],[-1100,-650,200,200,8],[1850,-2950,10,160],[0,300,350,50],[0,-300,350,50],[-247,2649,500,500],[705,3481,100,100],[-1194,2414,500,100],[-872,2345,100,100],[-1104,2348,100,100],[-1337,2334,100,100],[945,1335,100,100],[3100,-1350,100,550],[3400,-500,200,100],[3400,-900,200,100],[3900,-300,500,100],[3900,-1100,500,100],[4300,-700,100,300,7],[3e3,-350,10,240,2],[3700,-700,90,290,7],[3950,-900,160,90,7],[3950,-500,160,90,7],[4100,-700,10,100,7],[4150,-700,10,290,7],[-650,300,150,150]],_=dimension.create({mapSize:6e3,sandbox:!0,name:"obby2",allowScale:!0,type:"ffa",removeFallens:!0,forceRespawnScore:0,freeJoin:!0,displayName:"Event",displayColor:-7,displayRadiant:.2,walls:$,fillWalls:!0,gates:[[2,900,-1900,1,20,!1,0],[2,900,-1200,1,100,!1,0],[1,900,0,1,100,!1,0],[1,-700,875,0,175,!1,0],[2,1100,-3100,0,100,!1,0],],background:{r:205,g:205,b:205},grid:{r:200,g:200,b:200},gridSize:25,maxPolygonSides:0,maxPolygonCount:100,onDeath:function($){let _=$.tank;_.__respawns&&($.preventDefault(),_.upgrades[6]=_.score,dimension.sendTankTo({tank:_,dim:"obby2",override:!0}))},spawnPlayer:function($,e){return e.team=8,e.score=e.upgrades[6],e.upgrades[6]=0,e.upgrades[4]=10,e.update(),e.__respawns=!0,_.mapSize,setTimeout(function(){e.ws.sendPacket("announcement","Welcome! If you complete the map you have a 5% chance of getting rad 0.2!"),e.ws.sendPacket("announcement","Welcome! If you complete the map you have a 5% chance of getting rad 0.2!"),e.ws.sendPacket("announcement","Welcome! If you complete the map you have a 5% chance of getting rad 0.2!"),e.ws.sendPacket("announcement","Welcome! If you complete the map you have a 5% chance of getting rad 0.2!"),e.ws.sendPacket("announcement","Welcome! If you complete the map you have a 5% chance of getting rad 0.2!"),e.ws.sendPacket("announcement","Welcome! If you complete the map you have a 5% chance of getting rad 0.2!"),e.ws.sendPacket("announcement","Welcome! If you complete the map you have a 5% chance of getting rad 0.2!")},500),[0,0]},onUpdate:function(t){let i=t.now,o=i-n;n=i,d.xv+=.5,d.x<-650&&(d.x=-650,d.xv=5),d.x>1150&&(d.x=1150,d.xv=-5),d.y<638&&(d.y=638,d.yv=5),d.y>1112&&(d.y=1112,d.yv=-5);let l=[400,300,220,250];for(let r=0;r<4;r++){let c=11+r;$[c][0]=Math.round(200*Math.sin(i/l[r])),_.updatedWalls[c]=$[c]}for(let u=0;u<9;u++){let m=124+u;$[m][1]=Math.round(-2800+200*Math.sin((i+1830*u%1050)/(300+40*u))),$[m][2]=150,_.updatedWalls[m]=$[m]}$[16][0]=Math.round(900+100*Math.sin(i/100)),$[16][4]=2,_.updatedWalls[16]=$[16],$[53][0]=Math.round(-1100+350*Math.sin(i/400)),_.updatedWalls[53]=$[53],_.gates[2][6]>15&&(_.gates[2][6]=15),_.gates[3][6]>15&&(_.gates[3][6]=15),e+=o*(.5+.2*Math.sin(i/2e3));for(let p=0;p<10;p++)a(p+56,e+1e3*p,1&p);$[67][1]=Math.round(-2300+500*Math.sin(i/2e3)),_.updatedWalls[67]=$[67],$[68][1]=Math.round(-1170+500*Math.sin(i/2e3)),_.updatedWalls[68]=$[68],s.d=i/650%(2*Math.PI),$[80][0]=Math.round(400+400*Math.sin(i/200)),_.updatedWalls[80]=$[80]}});_.defaultWalls=0;let e=0,n=0,a=function($,e,n){e%=1e4;let a=_.walls[$];a[4]=2,e<9e3?(a[0]=n?-1e3:-1200,a[1]=-1100+.1*e,a[2]=200):(a[0]=n?-700:-1500,a[1]=-200-(e-9e3)*.9,a[2]=100),_.updatedWalls[$]=a},t={tanks:[],num:0,failed:!1,reset:function(){t.num=0,t.failed=!1;let $=[0,1,2,3,4,5,6,7,8];for(let e=0;e<9;e++){let n=t.tanks[e],a=$.splice(Math.floor(Math.random()*$.length),1)[0];n.team=5,n.invincible=!1,n.name=a+1+"",n.keypadnum=a,n.invincibleTime=0,_.updatedTanks[n.id]=n}},press:function($,e,n){if($.keypadnum!==t.num&&!t.failed)for(let a in t.failed=!0,e){let i=n.dimTanks[a];i&&dimension.sendTankTo({tank:i,dim:"obby2",override:!0})}if(t.num++,t.num>=9){for(let o=0;o<9;o++){let l=t.tanks[o];l.team=t.failed?2:3,l.name=o+1+"",_.updatedTanks[l.id]=l}t.failed||(_.gates[2][5]=!0,_.gates[2][6]=75),setTimeout(function(){_.gates[2][5]=!1,_.gates[2][6]=0,t.reset()},15e3)}}};for(let i=-1;i<=1;i++)for(let o=-1;o<=1;o++){let l=generator.tank({dim:_,x:2200+500*i,y:-900+500*o,name:""+(i+5+3*o),static:!0,weapon:"node",body:"base",score:0,radiant:.2,team:5,invincible:!1,onDeath:function($){let e=$.tank;$.preventDefault(),e.health=e.maxHealth,e.invincible=!0,5===e.team&&(e.team=1,_.updatedTanks[e.id]=e,t.press(l,e.finalDamage.tanks,$))}});t.tanks.push(l)}t.reset();let d=generator.tank({dim:_,x:900,y:250,name:"",static:!0,canBePushed:!0,friction:0,weapon:"node",body:"base",score:1e10,density:.001,weight:2,radiant:3,team:5,onDeath:function($){let _=$.tank;$.preventDefault(),_.health=_.maxHealth,_.invincible=!0}});d.invincible=!0,d.invincibleTime=0;let s=generator.tank({dim:_,x:-950,y:-3200,name:"",static:!0,weapon:"engineerAttract",body:"fountain",score:1e8,team:5,onDeath:function($){let _=$.tank;$.preventDefault(),_.health=_.maxHealth,_.invincible=!0}});s.invincible=!0,s.invincibleTime=0,s.firing=!0,s.upgrades[3]=23,s.upgrades[1]=-15,s.upgrades[2]=60;for(let r=0;r<10;r++){let c=generator.tank({dim:_,x:-1050+(r-5)*50,y:-2e3,name:"",static:!0,weapon:"mono",body:"hearth",score:0,team:5,ai:"fallen",onDeath:function($){let _=$.tank;$.preventDefault(),_.health=_.maxHealth,_.invincible=!0}});c.invincible=!0,c.invincibleTime=0}let u=generator.tank({dim:_,x:400,y:-3500,name:"",static:!0,weapon:"streamliner",body:"inferno",score:1e8,team:5,onDeath:function($){let _=$.tank;$.preventDefault(),_.health=_.maxHealth,_.invincible=!0}});u.invincible=!0,u.invincibleTime=0,u.firing=!0,u.upgrades[3]=10,u.upgrades[1]=-3,u.upgrades[2]=100;let m=generator.tank({dim:_,x:2850,y:-2150,name:"",static:!0,weapon:"hatcher",body:"mothership",score:1e10,team:5,onDeath:function($){let _=$.tank;$.preventDefault(),_.health=_.maxHealth,_.invincible=!0}});m.invincible=!0,m.invincibleTime=0,m.upgrades[2]=10;let p=generator.tank({dim:_,x:2200,y:-3500,name:"Current chance: 0.2%",static:!0,weapon:"nova",body:"spectator",score:0,team:5,onDeath:function($){let _=$.tank;$.preventDefault(),_.health=_.maxHealth,_.invincible=!0}}),f=.2;generator.wormhole({x:2200,y:-3500,size:50,type:2,dim:_,action:function($){if($.____)return;$.____=!0;let e=Math.random();if(console.log(e),100*e<f){f=.1;for(let n=0;n<10;n++)$.ws.sendPacket("announcement","WTF You got Radiant 0.2!");$.upgrades[4]=-10,$.radiant=.215338279,$.dim.updatedTanks[$.id]=$,setTimeout(function(){$.team=0,$.upgrades[4]=0,dimension.sendTankTo({tank:$,dim:"2teams",override:!0})},5e3)}else{f+=.2;for(let a=0;a<10;a++)$.ws.sendPacket("announcement","No Radiant for You!");$.upgrades[4]=-10,$.upgrades[6]=$.score+1,setTimeout(function(){$.upgrades[4]=0,dimension.sendTankTo({tank:$,dim:"obby2",override:!0})},5e3)}p.name=`Current chance: ${f.toFixed(1)}%`,_.updatedTanks[p.id]=p}});let h=generator.tank({dim:_,x:3900,y:-700,name:"Current chance: 0.01%",static:!0,weapon:"nova",body:"spectator",score:0,team:5,onDeath:function($){let _=$.tank;$.preventDefault(),_.health=_.maxHealth,_.invincible=!0}}),g=.01;generator.wormhole({x:3900,y:-700,size:50,type:2,dim:_,action:function($){if($.____)return;$.____=!0;let e=Math.random();if(console.log(e),100*e<g){g=.01;for(let n=0;n<10;n++)$.ws.sendPacket("announcement","WTF You got Radiant 0.2!");$.upgrades[4]=-10,$.radiant=.215338279,$.dim.updatedTanks[$.id]=$,setTimeout(function(){$.team=0,$.upgrades[4]=0,dimension.sendTankTo({tank:$,dim:"2teams",override:!0})},5e3)}else{g+=.01;for(let a=0;a<10;a++)$.ws.sendPacket("announcement","No Radiant for You!");$.upgrades[4]=-10,$.upgrades[6]=$.score+1,setTimeout(function(){$.upgrades[4]=0,dimension.sendTankTo({tank:$,dim:"obby2",override:!0})},5e3)}h.name=`Current chance: ${g.toFixed(2)}%`,_.updatedTanks[h.id]=h}})}();
+*/

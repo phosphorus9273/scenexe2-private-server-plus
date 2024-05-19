@@ -12,12 +12,13 @@
     "@fastify/view": "^8.2.0",
     "fastify": "^4.27.0",
     "fetch": "^1.1.0",
+    "got": "^14.3.0",
     "handlebars": "^4.7.8",
     "https": "^1.0.0",
     "msgpackr": "^1.10.1",
+    "selfsigned": "^2.4.1",
     "tls": "^0.0.1",
-    "ws": "^8.17.0",
-    "selfsigned": "^2.4.1"
+    "ws": "^8.17.0"
   },
   "engines": {
     "node": "14.x"

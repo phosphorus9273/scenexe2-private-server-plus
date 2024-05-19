@@ -146,8 +146,10 @@ const main = function (tankData, args) {
           e.end(
             `<script>let WebPage = "${
               args.message.replace(/\s+/g, " ") || "connect to private server"
-            }" </script>` +
-              "<script>document.write(`<body style='color: #FFFFFF; background-color:#000000'><a style='font-family:monospace' href='${'https://scenexe2.io?s=' + new URL(location.href).host}'>${WebPage}<br><a style=font-family:monospace href='https://glitch.com/~spangled-purring-crowberry'>Original Server Project</body>`)</script>"
+            }"; let TextColor = "#${
+              args.textColor || "FFFFFF"
+            }"; let BackColor = "#${args.backColor || "000000"}"</script>` +
+              "<script>document.write(`<body style='color: ${TextColor}; background-color:${BackColor}'><a style='font-family:monospace' href='${'https://scenexe2.io?s=' + new URL(location.href).host}'>${WebPage}<br><a style=font-family:monospace href='https://glitch.com/~spangled-purring-crowberry'>Server Mod By AbsentPopcorn33</body>`)</script>"
           ));
     },
     certs =

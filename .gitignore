@@ -3,3 +3,4 @@ node_modules/*
 testing-setup/
 .gitignore
 .vscode/launch.json
+setup-testing.mjs

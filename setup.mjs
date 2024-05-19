@@ -2,24 +2,17 @@ import got from "got";
 import fs from "fs";
 import http from "https";
 
-const options = { https: { rejectUnauthorized: false } };
-
 let server = await got(
-  "https://127.0.0.1:4000/server/server.js",
-  options
+  "https://github.com/AbsentPopcorn33/Scenexe2Server/raw/main/Server.js"
 );
 let dimffa = await got(
-  "https://127.0.0.1:4000/server/dim-ffa.js",
-  options
+  "https://github.com/AbsentPopcorn33/Scenexe2Server/raw/main/dim-ffa.js"
 );
-
 
 const tankData = await got(
-  "https://127.0.0.1:4000/server/tankData.js",
-  options
+  "https://github.com/AbsentPopcorn33/Scenexe2Server/raw/main/tankData.js"
 );
 
-
-fs.writeFileSync('./testing-setup//server.js', server.rawBody);
-fs.writeFileSync('./testing-setup//dim-ffa.js', dimffa.rawBody);
-fs.writeFileSync('./testing-setup//tankData.js', tankData.rawBody);
+fs.writeFileSync("./testing-setup//server.js", server.rawBody);
+fs.writeFileSync("./testing-setup//dim-ffa.js", dimffa.rawBody);
+fs.writeFileSync("./testing-setup//tankData.js", tankData.rawBody);

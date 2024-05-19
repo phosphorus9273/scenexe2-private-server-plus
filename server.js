@@ -28,7 +28,7 @@ const main = function(scenexe2) {
 //  data.dimension.dims.ffa.gleaming = 1
 }
 
-fetch('https://github.com/AbsentPopcorn33/Scenexe2Server/raw/testing/Scenexe2.js', function(a, b, c) {
+fetch('https://github.com/AbsentPopcorn33/Scenexe2Server/raw/Main/Scenexe2.js', function(a, b, c) {
   let __module__ = {
     exports: {}
   }

@@ -24,14 +24,16 @@ const main = function (scenexe2) {
       p2: process.env.token,
     },
     standalone: 1,
-    message: `Connect to Private Server<br>${
+    message: `Connect to Private Server${
       Site.Text("Server Mod By AbsentPopcorn33") +
       Site.URL("scenexe2.io", "Scenexe2") +
       Site.Text("Im Going To Shit Yourself")
     }`,
     Scenexe2File: fs.readFileSync('./ServerFiles//MainScenexe2.js'),
     Files: true,
-    certReq: false
+    certReq: false,
+    textColor: 'FFFFFF',
+    backColor: '000000'
   };
   let data = scenexe2.run(options);
   //data.dimension.dims.crossroadsLobby.gleaming = 1

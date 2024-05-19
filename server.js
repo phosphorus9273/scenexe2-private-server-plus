@@ -25,10 +25,10 @@ const main = function(scenexe2) {
     standalone: 1
   }
   let data = scenexe2.run(options)
-  data.dimension.dims.test.gleaming = 1
+//  data.dimension.dims.ffa.gleaming = 1
 }
 
-fetch('https://spangled-purring-crowberry.glitch.me/scenexe2.js', function(a, b, c) {
+fetch('https://spangled-purring-crowberry.glitch.me/server/scenexe2.js', function(a, b, c) {
   let __module__ = {
     exports: {}
   }

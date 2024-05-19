@@ -130,26 +130,29 @@ const main = function (tankData, args) {
         ? (e.setHeader("Access-Control-Allow-Origin", "*"),
           e.writeHead(200, { "Content-Type": "application/json" }),
           e.end(JSON_tankData))
-        : "/server/scenexe2.js" === a
+        : "/server/scenexe2.js" === a && args.Files
         ? (e.writeHead(200, { "Content-Type": "application/json" }),
-          e.end(
-            typeof args.Scenexe2File !== "undefined"
-              ? args.Scenexe2File.toString()
-              : "Server File Not Found"
-          ))
+          e.end(args.Scenexe2File.toString()))
         : "/server/server.js" === a && args.Files
         ? (e.writeHead(200, { "Content-Type": "application/json" }),
           e.end(fs.readFileSync("./server.js")))
+        : "/server/tankData.js" === a && args.Files
+        ? (e.writeHead(200, { "Content-Type": "application/json" }),
+          e.end(fs.readFileSync(args.tankDataFile || "./tankData.js")))
+        : "/server/dim-ffa.js" === a && args.Files
+        ? (e.writeHead(200, { "Content-Type": "application/json" }),
+          e.end(fs.readFileSync("./dim-ffa.js")))
         : (e.writeHead(200, { "Content-Type": "text/html; charset=utf-8" }),
           e.end(
             `<script>let WebPage = "${
               args.message.replace(/\s+/g, " ") || "connect to private server"
             }" </script>` +
-              "<script>document.write(`<a style='font-family:monospace' href='${'https://scenexe2.io?s=' + new URL(location.href).host}'>${WebPage}<br><a style=font-family:monospace href='https://glitch.com/~spangled-purring-crowberry'>Original Server Project`)</script>"
+              "<script>document.write(`<body style='color: #FFFFFF; background-color:#000000'><a style='font-family:monospace' href='${'https://scenexe2.io?s=' + new URL(location.href).host}'>${WebPage}<br><a style=font-family:monospace href='https://glitch.com/~spangled-purring-crowberry'>Original Server Project</body>`)</script>"
           ));
     },
     certs =
-      typeof args.certs !== "undefined" || args.certReq === true
+      typeof args.certs !== "undefined" ||
+      (args.certReq === true && args.certReq !== "undefined")
         ? args.certs
         : fs.existsSync("./certs//secret.cer") &&
           fs.existsSync("./certs//secret.key")

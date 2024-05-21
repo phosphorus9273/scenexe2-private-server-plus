@@ -1,6 +1,6 @@
 const fs = require("fs");
 const fetch = require("fetch").fetchUrl;
-let Scenexe2File = "ServerFiles//MainScenexe2.js";
+let Scenexe2File = "Scenexe2.js";
 const Site = {
   URL: function (a, b, c, f) {
     return `<br><a style=font-family:${f || "monospace"} href='${
@@ -20,12 +20,8 @@ const main = function (scenexe2) {
     testing: 0,
     start: `load('./dims//dim.ffa.js'), load('./dims//dim.sanctuary.js')`,
     secret: {
-      p1: process.env.maintoken,
+      p1: 'a',
       p2: process.env.token,
-    },
-    certs: {
-      key: fs.readFileSync("./GlitchCerts//secret.key"),
-      cert: fs.readFileSync("./GlitchCerts//secret.cer"),
     },
     standalone: 1,
     message: `Connect to Test Server${
@@ -40,7 +36,11 @@ const main = function (scenexe2) {
       Site.Text("Im Going To Shit Yourself")
     }`,
     Scenexe2File: scen2,
-    glitch: false,
+    Files: false,
+    reqCert: false,
+    backColor: "000000",
+    textColor: "FFFFFF",
+    Security: "https",
   };
   let data = scenexe2.run(options);
   //data.dimension.dims.crossroadsLobby.gleaming = 1
@@ -60,5 +60,4 @@ if (scen2) {
   let s = scen2.toString().replace(`module`, `__module__`);
   eval(s);
   main(__module__.exports);
-  console.log("Server Started");
 }

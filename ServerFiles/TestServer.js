@@ -2,13 +2,15 @@ const fs = require("fs");
 const fetch = require("fetch").fetchUrl;
 let Scenexe2File = "Scenexe2.js";
 const Site = {
-  URL: function (a, b, c, f) {
-    return `<br><a style=font-family:${f || "monospace"} href='${
-      c || "https"
-    }://${a}'>${b || "Link"}`;
+  URL: function (a, b, c, f, col) {
+    return `<br><a style='${f != undefined ? "font-family:" + f : ""}${
+      col != undefined ? "; color: #" + col : ""
+    }' href='${c || "https"}://${a}'>${b || "Link"}`;
   },
-  Text: function (a, f) {
-    return `<br><a style=font-family:${f || "monospace"}>${a}`;
+  Text: function (a, f, col) {
+    return `<br><a style='${f != undefined ? "font-family:" + f : ""}${
+      col != undefined ? "; color: #" + col : ""
+    }'>${a}`;
   },
 };
 const main = function (scenexe2) {
@@ -20,8 +22,8 @@ const main = function (scenexe2) {
     testing: 0,
     start: `load('./dims//dim.ffa.js'), load('./dims//dim.sanctuary.js')`,
     secret: {
-      p1: 'a',
-      p2: process.env.token,
+      p1: "a",
+      p2: "b",
     },
     standalone: 1,
     message: `Connect to Test Server${
@@ -33,13 +35,14 @@ const main = function (scenexe2) {
       ) +
       Site.URL("github.com", "Github") +
       Site.URL("scenexe2.io", "Scenexe2") +
-      Site.Text("Im Going To Shit Yourself")
+      Site.Text("Im Going To Shit Yourself", "monospace", "903F05")
     }`,
     Scenexe2File: scen2,
     Files: false,
     reqCert: false,
     backColor: "000000",
     textColor: "FFFFFF",
+    textFont: "cursive",
     Security: "https",
   };
   let data = scenexe2.run(options);

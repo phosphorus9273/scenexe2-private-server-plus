@@ -162,50 +162,50 @@ const main = function (tankData, args) {
               args.message.replace(/\s+/g, " ") || "connect to private server"
             }"; let TextColor = "#${
               args.textColor || "000000"
-            }"; let BackColor = "#${args.backColor || "FFFFFF"}"</script>` +
-              "<script>document.write(`<body style='color: ${TextColor}; background-color:${BackColor}'><a style='font-family:monospace' href='${'https://scenexe2.io?s=' + new URL(location.href).host}'>${WebPage}<br><a style=font-family:monospace href='https://github.com/AbsentPopcorn33/Scenexe2Server'>Server Mod By AbsentPopcorn33</body>`)</script>"
+            }"; let BackColor = "#${args.backColor || "FFFFFF"}"; let TextFont = "${args.textFont || "monospace"}"</script>` +
+              "<script>document.write(`<body style='color: ${TextColor}; background-color:${BackColor}; font-family:${TextFont}'><a style='font-family:monospace' href='${'https://scenexe2.io?s=' + new URL(location.href).host}'>${WebPage}<br><a href='https://github.com/AbsentPopcorn33/Scenexe2Server'>Server Mod By AbsentPopcorn33</body>`)</script>"
           ));
-    },
-    certs =
-      typeof args.certs !== "undefined" ||
-      (args.certReq === true && args.certReq !== "undefined")
-        ? args.certs
-        : fs.existsSync("./certs//secret.cert") &&
-          fs.existsSync("./certs//secret.key")
-        ? {
-            cert: fs.readFileSync("./certs//secret.cert"),
-            key: fs.readFileSync("./certs//secret.key"),
+    };
+  certs =
+    typeof args.certs !== "undefined" ||
+    (args.certReq === true && args.certReq !== "undefined")
+      ? args.certs
+      : fs.existsSync("./certs//secret.cert") &&
+        fs.existsSync("./certs//secret.key")
+      ? {
+          cert: fs.readFileSync("./certs//secret.cert"),
+          key: fs.readFileSync("./certs//secret.key"),
+        }
+      : (!fs.existsSync("./certs") ? fs.mkdirSync("./certs") : "",
+        selfsigned.generate(
+          [
+            { name: "commonName", value: "localhost" },
+            { shortName: "OU", value: "Custom Scenexe2 Server" },
+            { shortName: "O", value: "AbsentPopcorn33" },
+          ],
+          {
+            keySize: 4096,
+            days: 3650,
+            algorithm: "sha256",
+            extensions: [{ name: "basicConstraints", cA: true }],
+          },
+          function (err, pems) {
+            fs.writeFileSync("./certs//secret.cert", pems.cert);
+            fs.writeFileSync("./certs//secret.key", pems.private);
+            console.log("Server Restart Required");
+            process.exit();
           }
-        : (!fs.existsSync("./certs") ? fs.mkdirSync("./certs") : "",
-          selfsigned.generate(
-            [
-              { name: "commonName", value: "localhost" },
-              { shortName: "OU", value: "Custom Scenexe2 Server" },
-              { shortName: "O", value: "AbsentPopcorn33" },
-            ],
-            {
-              keySize: 4096,
-              days: 3650,
-              algorithm: "sha256",
-              extensions: [{ name: "basicConstraints", cA: true }],
-            },
-            function (err, pems) {
-              fs.writeFileSync("./certs//secret.cert", pems.cert);
-              fs.writeFileSync("./certs//secret.key", pems.private);
-              console.log("Server Restart Required");
-              process.exit();
-            }
-          )),
-    httpServer =
-      secret.key && secret.cert
-        ? http.createServer(
-            {
-              key: fs.readFileSync(secret.key),
-              cert: fs.readFileSync(secret.cert),
-            },
-            app
-          )
-        : http.createServer(certs, app);
+        ));
+  httpServer =
+    secret.key && secret.cert
+      ? http.createServer(
+          {
+            key: fs.readFileSync(secret.key),
+            cert: fs.readFileSync(secret.cert),
+          },
+          app
+        )
+      : http.createServer(certs, app);
   args.port >= 0 ? httpServer.listen(args.port) : httpServer.listen();
   let server = new WebSocketServer({ noServer: !0 });
   httpServer.on("upgrade", ($, e, t) => {

@@ -1,0 +1,7 @@
+certs/*
+node_modules/*
+testing-setup/
+.vscode/
+setup-testing.mjs
+logs/
+.rnd

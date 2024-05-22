@@ -1,7 +1,0 @@
-certs/*
-node_modules/*
-testing-setup/
-.gitignore
-.vscode/
-setup-testing.mjs
-logs/

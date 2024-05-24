@@ -27,7 +27,7 @@ const main = function (scenexe2) {
     },
     standalone: 1,
     message: `Connect to Test Server${
-      Site.Text("Testing Site function and message customisation") +
+      Site.Text("Testing Site function and message customisation", "monospace") +
       Site.Text("am BEANS lol") +
       Site.URL(
         "glitch.com/~spangled-purring-crowberry",
@@ -35,7 +35,7 @@ const main = function (scenexe2) {
       ) +
       Site.URL("github.com", "Github") +
       Site.URL("scenexe2.io", "Scenexe2") +
-      Site.Text("Im Going To Shit Yourself", "monospace", "903F05")
+      Site.Text("Im Going To Shit Yourself", "cursive", "903F05")
     }`,
     Scenexe2File: scen2,
     Files: false,
@@ -43,7 +43,9 @@ const main = function (scenexe2) {
     backColor: "000000",
     textColor: "FFFFFF",
     textFont: "cursive",
+    urlColor: 'FF0000',
     Security: "https",
+    AntiLagCap: 50000,
   };
   let data = scenexe2.run(options);
   //data.dimension.dims.crossroadsLobby.gleaming = 1

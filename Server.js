@@ -1,12 +1,12 @@
 const fs = require("fs");
 const fetch = require("fetch").fetchUrl;
 const Site = {
-  URL: function (a, b, c, f, col) {
+  URL: function (a, b, c, f, col) { //Usage: Site.URL(URL, Optional: Text, Type, Font, Color)
     return `<br><a style='${f != undefined ? "font-family:" + f : ""}${
       col != undefined ? "; color: #" + col : ""
     }' href='${c || "https"}://${a}'>${b || "Link"}`;
   },
-  Text: function (a, f, col) {
+  Text: function (a, f, col) { //Usage:Site.URL(Text, Optional: Font, Color)
     return `<br><a style='${f != undefined ? "font-family:" + f : ""}${
       col != undefined ? "; color: #" + col : ""
     }'>${a}`;
@@ -30,6 +30,7 @@ const main = function (scenexe2) {
 //    backColor: '', //WebPage Background Color
 //    textColor: '', //WebPage Text Color
 //    textFont: '', //WebPage Text Font
+//    urlColor: '', //WebPage Server URL Color Config
   };
   let data = scenexe2.run(options);
   //  data.dimension.dims.ffa.gleaming = 1

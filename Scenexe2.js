@@ -17,7 +17,6 @@ let LogFileDate = [date.toDateString(), date.toTimeString().split(" ")[0]]
   .replace(/ /g, "_")
   .replace(/:/g, "-");
 !fs.existsSync("./logs//") ? fs.mkdirSync("./logs//") : "";
-fs.writeFileSync(`./logs//Log-${LogFileDate}.txt`, "");
 let createAchievement = function ($) {
   return { time: Math.floor(Date.now() / 1e3), id: $ };
 };
@@ -158,12 +157,18 @@ const main = function (tankData, args) {
           e.end(fs.readFileSync("./dim-ffa.js")))
         : (e.writeHead(200, { "Content-Type": "text/html; charset=utf-8" }),
           e.end(
-            `<script>let WebPage = "${
-              args.message.replace(/\s+/g, " ") || "connect to private server"
-            }"; let TextColor = "#${
+            `<script>let TextColor = "#${
               args.textColor || "000000"
-            }"; let BackColor = "#${args.backColor || "FFFFFF"}"; let TextFont = "${args.textFont || "monospace"}"</script>` +
-              "<script>document.write(`<body style='color: ${TextColor}; background-color:${BackColor}; font-family:${TextFont}'><a href='${'https://scenexe2.io?s=' + new URL(location.href).host}'>${WebPage}<br><a href='https://github.com/AbsentPopcorn33/Scenexe2Server'>Server Mod By AbsentPopcorn33</body>`)</script>"
+            }"; let BackColor = "#${
+              args.backColor || "FFFFFF"
+            }"; let TextFont = "${args.textFont || "monospace"}"; ${
+              args.urlColor != "undefined"
+                ? 'let URLColor = "#' + args.urlColor + '"'
+                : "let URLColot = #FF00FF"
+            };let WebPage = "${
+              args.message.replace(/\s+/g, " ") || "connect to private server"
+            }"; </script>` +
+              "<script>document.write(`<body style='color:${TextColor}; background-color:${BackColor}; font-family:${TextFont}'><a style='color: ${URLColor}' href='${'https://scenexe2.io?s=' + new URL(location.href).host}'>${WebPage}<br><a style='color:${URLColor}' href='https://github.com/AbsentPopcorn33/Scenexe2Server'>Server Mod By AbsentPopcorn33</body>`)</script>"
           ));
     };
   certs =
@@ -7601,15 +7606,22 @@ const main = function (tankData, args) {
                 if ($.data.tank) {
                   let w = commands.execute(y, $.data.tank, $);
                   w &&
-                    $.accountName &&
-                    $.accountName &&
-                    commands.rules[y.slice(1).split(" ")[0]] &&
-                    (($.accountName = !1),
-                    ($.accountData = !1),
-                    $.sendPacket(
-                      "announcement",
-                      "Alert: You can no longer earn achievements and this run won't be saved!"
-                    ));
+                    console.log(
+                      $.data.tank != false
+                        ? `Command, "${$.data.tank.name}" t${$.data.tank.id} ${$.data.tank.dim.name}:`
+                        : "Command, Unknown:",
+                      y
+                    ),
+                    w &&
+                      $.accountName &&
+                      $.accountName &&
+                      commands.rules[y.slice(1).split(" ")[0]] &&
+                      (($.accountName = !1),
+                      ($.accountData = !1),
+                      $.sendPacket(
+                        "announcement",
+                        "Alert: You can no longer earn achievements and this run won't be saved!"
+                      ));
                 }
               } else {
                 y && (y = y.slice(0, 100));
@@ -7627,15 +7639,22 @@ const main = function (tankData, args) {
                         "announcement",
                         "You are sending chat messages too quickly. Please slow down."
                       )
-                    : $.data.tank.chat(y);
+                    : $.data.tank.chat(y),
+                    console.log(
+                      $.data.tank != false
+                        ? `"${$.data.tank.name}" t${$.data.tank.id} ${$.data.tank.dim.name}:`
+                        : "Unknown:",
+                      y
+                    );
                 }
               }
-              console.log(
-                $.data.tank != false
-                  ? `"${$.data.tank.name}" t${$.data.tank.id} ${$.data.tank.dim.name}:`
-                  : "Unknown:",
-                y
-              );
+              if (y.indexOf("/") == 0)
+                console.log(
+                  $.data.tank != false
+                    ? `"${$.data.tank.name}" t${$.data.tank.id} ${$.data.tank.dim.name}:`
+                    : "Unknown:",
+                  y
+                );
             } else if ("typing" === n)
               $.data.tank && ($.data.tank.typing = !!t[1]);
             else if ("passive" === n)
@@ -7794,7 +7813,7 @@ const main = function (tankData, args) {
         _ = 0;
       $.intervalId = setInterval(function () {
         let $ = _performance.now();
-        $ - _ > 500 && dimension.antilag(),
+        $ - _ > (args.AntiLagCap || 500) && dimension.antilag(),
           $ >= i &&
             ((_ = $), (i += 20 * (1 + Math.floor(($ - i) * 0.05))), n($));
       }, 9);

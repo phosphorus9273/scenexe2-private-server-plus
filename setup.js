@@ -1,7 +1,6 @@
 const fs = require("fs");
 const https = require("https");
 const responseData = function (response, FileName) {
-  console.log("function run");
   let data = "";
   response.on("data", (chunk) => {
     data = data + chunk.toString();
@@ -9,8 +8,9 @@ const responseData = function (response, FileName) {
 
   response.on("end", () => {
     const body = data;
-    console.log(body);
+    //    console.log(body);
     fs.writeFileSync("./" + FileName, body);
+    console.log("File " + FileName + " Downloaded");
   });
 };
 
@@ -23,6 +23,9 @@ let ServerURL =
 let dimffaURL =
   "https://raw.githubusercontent.com/AbsentPopcorn33/Scenexe2Server/main/dim-ffa.js";
 
+let PackageURL =
+  "https://raw.githubusercontent.com/AbsentPopcorn33/Scenexe2Server/main/package.json";
+
 const tankData = https.request(tankDataURL, (response) =>
   responseData(response, "tankData.js")
 );
@@ -31,6 +34,9 @@ const Server = https.request(ServerURL, (response) =>
 );
 const dimffa = https.request(dimffaURL, (response) =>
   responseData(response, "dim-ffa.js")
+);
+const Package = https.request(PackageURL, (response) =>
+  responseData(response, "package.json")
 );
 
 tankData.on("error", (error) => {
@@ -45,3 +51,7 @@ dimffa.on("error", (error) => {
   console.log("An error", error);
 });
 dimffa.end();
+Package.on("error", (error) => {
+  console.log("An error", error);
+});
+Package.end();

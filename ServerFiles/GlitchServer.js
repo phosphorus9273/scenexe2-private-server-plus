@@ -1,6 +1,6 @@
 const fs = require("fs");
 const fetch = require("fetch").fetchUrl;
-let Scenexe2File = "ServerFiles//GlitchScenexe2.js";
+let Scenexe2File = "Scenexe2.js";
 const Site = {
   URL: function (a, b, c, font, col) {
     return `<br><a style='${font != undefined ? "font-family:" + font : ""};${
@@ -28,7 +28,7 @@ const main = function (scenexe2) {
     },
     standalone: 1,
     message: `Connect to Private Server${
-      Site.Text("Texting Site.Text Function", "comic sans ms", "FFFF00") +
+      Site.Text("Testing Site.Text Function", "comic sans ms", "FFFF00") +
       Site.URL(
         "github.com",
         "Testing Site.URL Function",
@@ -37,11 +37,10 @@ const main = function (scenexe2) {
         "00FFFF"
       ) +
       Site.Text("Testing textColor Option", "comic sans ms") +
-      Site.URL(
-        "glitch.com",
-        "Testing textColor/ URLColor Option",
-        "https",
-        "comic sans ms"
+      Site.Text(
+        "Testing Site.Text Function",
+        "comic sans ms", 
+        "FF00FF"
       )
     }`,
     Scenexe2File: fs.readFileSync("./ServerFiles//MainScenexe2.js"),
@@ -49,8 +48,8 @@ const main = function (scenexe2) {
     certReq: false,
     textColor: "FFFFFF",
     backColor: "000000",
-    textFont: "monospace",
-    urlColor: "FFFF00",
+    textFont: "cursive",
+    urlColor: "FF0000",
     Security: "http",
     certReq: true,
   };

@@ -7,7 +7,7 @@
     type: "ffa", // leave this
     freeJoin: true, // whether tank can join from server select
     allowScale: true, // allow use of /mapsize command
-    removeFallens: true, // remove tanks that go fallen
+    removeFallens: false, // remove tanks that go fallen
     displayName: "Free For All", // name of dim shown on server select
     displayRadiant: 0, // make color radiant on server select
     displayColor: 2, // color on server select

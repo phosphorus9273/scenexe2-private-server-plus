@@ -6900,7 +6900,7 @@ const main = function (tankData, args) {
               let a = e.dim;
               if (a.allowScale) {
                 let n = $[0];
-                n < 1 && (n = 1), n > 1e5 && (n = 1e5), (a.mapSize = n);
+                n < -1e5 && (n = -1e5), n > 1e15 && (n = 1e15), (a.mapSize = n);
               }
             },
           ],

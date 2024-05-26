@@ -1,16 +1,18 @@
 const fs = require("fs");
 const fetch = require("fetch").fetchUrl;
-let Scenexe2File = "Scenexe2.js";
+const Scenexe2File = "Scenexe2.js";
 const Site = {
-  URL: function (a, b, c, f, col) {
-    return `<br><a style='${f != undefined ? "font-family:" + f : ""}${
-      col != undefined ? "; color: #" + col : ""
-    }' href='${c || "https"}://${a}'>${b || "Link"}`;
+  URL: function (url, text, type, font, col) {
+    //Usage: Site.URL(URL, Optional: Text, Type, Font, Color)
+    return `<br><a style='${font != undefined ? "font-family:" + font : ""};${
+      col != undefined ? "color: #" + col : ""
+    }' href='${type || "https"}://${url}'>${text || "Link"}`;
   },
-  Text: function (a, f, col) {
-    return `<br><a style='${f != undefined ? "font-family:" + f : ""}${
+  Text: function (text, font, col) {
+    //Usage:Site.URL(Text, Optional: Font, Color)
+    return `<br><a style='${font != undefined ? "font-family:" + font : ""}${
       col != undefined ? "; color: #" + col : ""
-    }'>${a}`;
+    }'>${text}`;
   },
 };
 const main = function (scenexe2) {
@@ -19,16 +21,16 @@ const main = function (scenexe2) {
       postMessage: function () {},
     },
     port: 4000,
-    testing: 0,
-    start: `load('./dims//dim.ffa.js'), load('./dims//dim.sanctuary.js')`,
+    testing: 1,
+    start: `load('./dims//dim.ffa.js'), load('./dims//dim.sanctuary.js', load('./dims//dim.test.js'), load('./commands.js'))`,
     secret: {
-      p1: "a",
-      p2: "b",
+      p1: "Admin",
+      p2: "Mod",
     },
+    autoAdmin: "BEANS",
     standalone: 1,
     message: `Connect to Test Server${
-      Site.Text("Testing Site function and message customisation", "monospace") +
-      Site.Text("am BEANS lol") +
+      Site.Text("am BEANS lol", "cursive") +
       Site.URL(
         "glitch.com/~spangled-purring-crowberry",
         "Original Glitch Project"
@@ -37,32 +39,31 @@ const main = function (scenexe2) {
       Site.URL("scenexe2.io", "Scenexe2") +
       Site.Text("Im Going To Shit Yourself", "cursive", "903F05")
     }`,
-    Scenexe2File: scen2,
     Files: false,
     reqCert: false,
     backColor: "000000",
     textColor: "FFFFFF",
     textFont: "cursive",
-    urlColor: 'FF0000',
+    urlColor: "FF0000",
     Security: "https",
     AntiLagCap: 50000,
   };
   let data = scenexe2.run(options);
   //data.dimension.dims.crossroadsLobby.gleaming = 1
 };
-if (fs.existsSync(Scenexe2File)) {
-  console.log("Found file");
+if (typeof Scenexe2File == "undefined") {
+  console.log("Server File Not Defined"), process.exit(1);
 }
-const scen2 =
-  typeof Scenexe2File !== "undefined" && fs.existsSync(Scenexe2File)
-    ? fs.readFileSync(Scenexe2File).toString()
-    : console.log("Scenexe2 Server File Missing \nServer Not Started");
-
-if (scen2) {
+if (fs.existsSync(Scenexe2File)) {
   let __module__ = {
     exports: {},
   };
-  let s = scen2.toString().replace(`module`, `__module__`);
+  let s = fs
+    .readFileSync(Scenexe2File)
+    .toString()
+    .replace(`module`, `__module__`);
   eval(s);
   main(__module__.exports);
+} else {
+  console.log("Server File Not Found"), process.exit(1);
 }

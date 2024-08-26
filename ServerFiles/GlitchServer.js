@@ -1,6 +1,6 @@
 const fs = require("fs");
 const fetch = require("fetch").fetchUrl;
-let Scenexe2File = "Scenexe2.js";
+let Scenexe2File = "./Scenexe2.js";
 const Site = {
   URL: function (a, b, c, font, col) {
     return `<br><a style='${font != undefined ? "font-family:" + font : ""};${
@@ -43,8 +43,8 @@ const main = function (scenexe2) {
         "FF00FF"
       )
     }`,
-    Scenexe2File: fs.readFileSync("./ServerFiles//MainScenexe2.js"),
-    Files: true,
+    Scenexe2File: fs.readFileSync(Scenexe2File),
+    Files: false,
     certReq: false,
     textColor: "FFFFFF",
     backColor: "000000",

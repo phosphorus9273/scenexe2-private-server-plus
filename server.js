@@ -40,7 +40,7 @@ const main = function (scenexe2) {
 };
 
 fetch(
-  "https://raw.githubusercontent.com/AbsentPopcorn33/Scenexe2Server/main/Scenexe2.js",
+  "./scenexe2.js",
   function (a, b, c) {
     let __module__ = {
       exports: {},
